@@ -28,3 +28,5 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ​
+## 実装リスト
+https://docs.google.com/spreadsheets/d/1N5A5KZr-titxXABMAXqAguQddocUBF_WLdzUEBe07GU/edit#gid=885378170
