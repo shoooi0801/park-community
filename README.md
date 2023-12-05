@@ -20,6 +20,9 @@
 ​
 ## 設計書
 後ほど作成予定
+
+## 実装リスト
+https://docs.google.com/spreadsheets/d/1N5A5KZr-titxXABMAXqAguQddocUBF_WLdzUEBe07GU/edit#gid=885378170
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -28,5 +31,3 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ​
-## 実装リスト
-https://docs.google.com/spreadsheets/d/1N5A5KZr-titxXABMAXqAguQddocUBF_WLdzUEBe07GU/edit#gid=885378170
