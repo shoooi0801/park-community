@@ -22,12 +22,11 @@
 
 ## 開発環境
 
-##
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,Javascript,ruby,SQL
 - フレームワーク：ruby on Rails
 - JSライブラリ：jQuery
 - IDE：cloud9
--
+
 ## 使用素材
 なし
