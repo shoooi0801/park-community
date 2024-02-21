@@ -5,12 +5,59 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/c79c564768.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  </body>
+  <header>
+    <nav class="navbar navbar-expand-lg border-bottom">
+    <div class="container">
+    <%= link_to "LOGO", root_path, class:"navbar-brand" %>
+    <ul class="navbar-nav ml-auto">
+    <% if admin_signed_in? %>
+      <li>
+        <%= link_to "投稿一覧", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to "会員一覧", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+      </li>
+    <% elsif customer_signed_in? %>
+    <p>ようこそ<%= current_customer.name %>さん!</p>
+      <li>
+        <%= link_to "マイページ", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to "投稿一覧", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to "新規投稿", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "マイページ", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to "投稿一覧", root_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to "新規登録", new_customer_registration_path,class:"navbar-brand" %>
+      </li>
+      <li>
+        <%= link_to 'ログイン', new_customer_session_path %>
+      </li>
+      <% end %>
+    </ul>
+    </div>
+    </nav>
+  </header>
     <%= yield %>
   </body>
 </html>
