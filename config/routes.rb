@@ -14,6 +14,11 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
   scope module: :public do
     root 'homes#top'
+    # get '/customers/my_page' => 'public/customers#show', as: "show_customers"
+    # get '/customers/information/edit' => 'public/customers#edit', as: 'edit_customers'
+    # get "/customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe_customers"
+    # patch '/customers/information' => 'public/customers#update'
+    # patch 'customers/withdraw' => 'customers/withdraw', as: "withdraw_customers"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
