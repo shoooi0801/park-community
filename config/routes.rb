@@ -14,10 +14,10 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
   scope module: :public do
     root 'homes#top'
-    get '/customers/my_page' => 'public/customers#show', as: "show_customers"
-    get '/customers/information/edit' => 'public/customers#edit', as: 'edit_customers'
-    get "/customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe_customers"
-    patch '/customers/information' => 'public/customers#update'
+    get '/customers/my_page' => 'customers#show', as: "show_customers"
+    get '/customers/information/edit' => 'customers#edit', as: 'edit_customers'
+    get "/customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe_customers"
+    patch '/customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers/withdraw', as: "withdraw_customers"
 
     resources :posts, only: [:new, :index, :show,:create]
