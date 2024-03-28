@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 2024_01_22_095450) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "customer_id", null: false
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "customer_id", null: false
     t.integer "post_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2024_01_22_095450) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "customer_id", null: false
     t.string "name", null: false
     t.string "parking", null: false
     t.string "postal_code", null: false
