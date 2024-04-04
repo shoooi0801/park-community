@@ -1,23 +1,12 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
   # GET /resource/sign_in
   # def new
   #   super
   # end
-
-private
-def customer_state
-  @customer = Customer.find_by(email: params[:customer][:email])
-  return if @customer.nil?
-  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
-     flash[:notice] = "退会済みです。再登録後にご利用ください。"
-     redirect_to new_customer_registration_path
-  else
-     flash[:notice] = "項目を入力してください"
-  end
-end
 
   # POST /resource/sign_in
   # def create
@@ -43,5 +32,17 @@ end
   def after_sign_out_path_for(resource)
     root_path
   end
+
+private
+def customer_state
+  @customer = Customer.find_by(email: params[:customer][:email])
+  return if @customer.nil?
+  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+     flash[:notice] = "退会済みです。再登録後にご利用ください。"
+     redirect_to new_customer_registration_path
+  else
+     flash[:notice] = "項目を入力してください"
+  end
+end
 
 end
