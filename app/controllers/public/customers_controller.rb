@@ -14,6 +14,16 @@ class Public::CustomersController < ApplicationController
     redirect_to show_customers_path
   end
 
+  def unsubscribe
+  end
+
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_active: true)
+    reset_session
+    redirect_to root_path
+  end
+
   private
   def customer_params
     params.require(:customer).permit(:name, :email, :introduction)

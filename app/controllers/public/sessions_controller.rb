@@ -7,6 +7,18 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+private
+def customer_state
+  @customer = Customer.find_by(email: params[:customer][:email])
+  return if @customer.nil?
+  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
+     flash[:notice] = "退会済みです。再登録後にご利用ください。"
+     redirect_to new_customer_registration_path
+  else
+     flash[:notice] = "項目を入力してください"
+  end
+end
+
   # POST /resource/sign_in
   # def create
   #   super
@@ -27,9 +39,9 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
      root_path
   end
-  
+
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
 end

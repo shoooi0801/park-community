@@ -20,6 +20,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch '/customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers/withdraw', as: "withdraw_customers"
 
+
     resources :posts, only: [:new, :index, :show,:create]
 
   end
