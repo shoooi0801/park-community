@@ -6,12 +6,6 @@ devise_for :customers, skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-}
-
   scope module: :public do
     root 'homes#top'
     get '/customers/my_page' => 'customers#show', as: "show_customers"
@@ -20,9 +14,17 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch '/customers/information' => 'customers#update'
     patch 'customers/withdraw' => 'customers/withdraw', as: "withdraw_customers"
 
-
     resources :posts, only: [:new, :index, :show,:create]
+  end
 
+# 管理者用
+# URL /admin/sign_in ...
+devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  sessions: "admin/sessions"
+}
+
+  scope module: :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
