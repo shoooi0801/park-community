@@ -1,0 +1,30 @@
+<h2><%= @customer.name + @customer.name %>さんの会員詳細</h2>
+
+<table class="customer.index">
+  <tr>
+    <td>会員ID</td>
+    <td><%= @customer.id %></td>
+  </tr>
+  <tr>
+    <td>氏名</td>
+    <td><%= @customer.name %></td>
+  </tr>
+    <td>メールアドレス</td>
+    <td><%= @customer.email %></td>
+  </tr>
+  <tr>
+    <td>会員ステータス</td>
+    <td>
+      <% if @customer.is_deleted %>
+        退会
+        <% else %>
+        有効
+        <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= link_to "編集する", customers_admin_edit_path, class: "btn btn-success" %></td>
+    <td><%= link_to "投稿の一覧を見る",  customers_admin_edit_path, class: "glyphicon glyphicon-home btn btn-primary"  %></td>
+  </tr>
+</table>

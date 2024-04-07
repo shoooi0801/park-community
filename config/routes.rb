@@ -24,7 +24,10 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 }
 
   scope module: :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+    get "/admin/customers" => "customers#index", as: "customers_admin_index"
+    get "/admin/customers/:id" => "customers#show", as: "customers_admin_show"
+    get "/admin/customers/:id/edit" => "customers#edit", as: "customers_admin_edit"
+    patch "/admin/customers/:id" => "customers#update", as: "customers_admin_update"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
